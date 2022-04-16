@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bb42dfdc0ef84e67a4b5ad38b126b85b" Name="Diagram1">
+        <EntityTypeShape EntityType="ShopModel.Addmin" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.BinhLuan" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.Cart" Width="1.5" PointX="8.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.ChiTietDH" Width="1.5" PointX="7.5" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.ChiTietHD" Width="1.5" PointX="7.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.ChiTietSp" Width="1.5" PointX="5.25" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.DatHang" Width="1.5" PointX="3" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.HoaDon" Width="1.5" PointX="5.25" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.KhachHang" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.LoaiSanPham" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.SanPham" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.SanPham_Anh" Width="1.5" PointX="5.25" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopModel.sysdiagram" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="ShopModel.FK_BinhLuan_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_BinhLuan_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Cart_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_Cart_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_ChiTietDH_ChiTietSp" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_ChiTietDH_DatHang" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_ChiTietHD_ChiTietSp" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_ChiTietHD_HoaDon" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_ChiTietHD_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_ChiTietSp_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_DatHang_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_HoaDon_DatHang" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_HoaDon_DatHang1" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_HoaDon_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_SanPham_LoaiSanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopModel.FK_SanPham_Anh_SanPham" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

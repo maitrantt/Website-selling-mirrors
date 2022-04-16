@@ -1,0 +1,116 @@
+﻿
+@model IEnumerable<Shop.Models.DB.Product_Hot_Result>
+
+<section id="product_hot">
+    <div class="container">
+        <div class="section-content">
+            <div class="section_head text-center">
+                <h2 class="section_heading">Mirro Hot</h2>
+            </div>
+            <div class="product-list">
+                <div class="product_list-content w-full relative overflow-hd">
+                    <div class="product_list-wrap">
+                        <div class="row">
+                            @foreach (var sp in Model)
+                            {
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 product-column">
+                                    <div class="id-item hidden" data-id="@sp.IdSp"></div>
+                                    <div class="product-image relative overflow-hd">
+                                        <div class="flex justify-center items-center relative">
+                                            <a href="/ProductItem/Index?id=@sp.IdSp" class="block w-full">
+                                                <div class="prod_main-img">
+                                                    <img class="w-full h-full" src="@Url.Content("~/Content/images/Products/"+@sp.Image)" alt="@sp.TenSanPham">
+                                                </div>
+                                                <div class="prod_hover-img">
+                                                    <img class="w-full h-full" src="@Url.Content("~/Content/images/Products/"+@sp.ImageHover)" alt="@sp.TenSanPham">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <span class="prod__tag prod__tag--soldout" style="display: none;">
+                                            Sold Out
+                                        </span>
+                                        <div class="product-action hidden">
+                                            @*<button class="tooltip-item prod_btn-icon tooltip-left tooltip-style" data-product-handle="slim-oak-frame-mirror" type="button">
+                                                <span class="tooltip-icon block">
+                                                    <svg class="w-20px h-20px" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                                        <path fill="currentColor" d="M164 384h-44V48a16 16 0 0 0-16-16H88a16 16 0 0 0-16 16v336H28a12 12 0 0 0-8.73 20.24l68 72a12 12 0 0 0 17.44 0l68-72A12 12 0 0 0 164 384zm200.72-276.24l-68-72a12 12 0 0 0-17.44 0l-68 72A12 12 0 0 0 220 128h44v336a16 16 0 0 0 16 16h16a16 16 0 0 0 16-16V128h44a12 12 0 0 0 8.72-20.24z">
+                                                        </path>
+                                                    </svg>
+                                                </span>
+                                                <span class="tooltip-content" data-revert-text="Remove from compare">
+                                                    Compare
+                                                </span>
+                                            </button>*@
+                                            <button class="product_btn-iconQuickView tooltip-item prod_btn-icon tooltip-left tooltip-style" data-product-handle="slim-oak-frame-mirror" type="button">
+                                                <span class="tooltip-icon block">
+                                                    <svg class="w-20px h-20px" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                                        <path d="M569.354 231.631C512.969 135.948 407.808 72 288 72 168.14 72 63.004 135.994 6.646 231.63a47.999 47.999 0 0 0 0 48.739C63.032 376.053 168.192 440 288 440c119.86 0 224.996-63.994 281.354-159.631a48.002 48.002 0 0 0 0-48.738zM416 228c0 68.483-57.308 124-128 124s-128-55.517-128-124 57.308-124 128-124 128 55.517 128 124zm125.784 36.123C489.837 352.277 393.865 408 288 408c-106.291 0-202.061-56.105-253.784-143.876a16.006 16.006 0 0 1 0-16.247c29.072-49.333 73.341-90.435 127.66-115.887C140.845 158.191 128 191.568 128 228c0 85.818 71.221 156 160 156 88.77 0 160-70.178 160-156 0-36.411-12.833-69.794-33.875-96.01 53.76 25.189 98.274 66.021 127.66 115.887a16.006 16.006 0 0 1-.001 16.246zM224 224c0-10.897 2.727-21.156 7.53-30.137v.02c0 14.554 11.799 26.353 26.353 26.353 14.554 0 26.353-11.799 26.353-26.353s-11.799-26.353-26.353-26.353h-.02c8.981-4.803 19.24-7.53 30.137-7.53 35.346 0 64 28.654 64 64s-28.654 64-64 64-64-28.654-64-64z"></path>
+                                                    </svg>
+                                                </span>
+                                                <span class="tooltip-content" data-revert-text="">
+                                                    Quick view
+                                                </span>
+                                            </button>
+                                        </div>
+                                        @*<div class="product-quick-add">
+                                            <button type="submit" name="add" class="add-to-cart relative " data-atc-text="Quick Add">
+                                                <span>Quick Add</span>
+                                            </button>
+                                        </div>*@
+                                    </div>
+                                    <div class="product-context text-center">
+                                        <div class="w-full product-name">
+                                            <h3 class="section_heading">
+                                                <a href="/ProductItem/Index?id=@sp.IdSp">@sp.TenSanPham</a>
+                                            </h3>
+                                        </div>
+                                        <div class="product-price">
+                                            <div class="flex items-center flex-wrap justify-center">
+
+                                                @if (@sp.GiamGia > 0)
+                                                {
+                                                    <div class="price">$@sp.Tien</div>
+                                                    <div class="price-sel">
+                                                        $
+                                                        @{
+                                                            var giamgia = sp.Tien * (100 - sp.GiamGia) / 100;
+                                                            @giamgia
+                                                        }
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="priceNotSel">$@sp.Tien</div>
+                                                }
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="slider_controls flex items-center justify-between">
+                        <button class="swiper-button-control button-prev btn-icon">
+                            <svg width="14px" height="14px" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path d="M229.9 473.899l19.799-19.799c4.686-4.686 4.686-12.284 0-16.971L94.569 282H436c6.627 0 12-5.373 12-12v-28c0-6.627-5.373-12-12-12H94.569l155.13-155.13c4.686-4.686 4.686-12.284 0-16.971L229.9 38.101c-4.686-4.686-12.284-4.686-16.971 0L3.515 247.515c-4.686 4.686-4.686 12.284 0 16.971L212.929 473.9c4.686 4.686 12.284 4.686 16.971-.001z">
+                                </path>
+                            </svg>
+                        </button>
+                        <button class="swiper-button-control button-next btn-icon">
+                            <svg fill="currentColor" width="14px" height="14px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path d="M218.101 38.101L198.302 57.9c-4.686 4.686-4.686 12.284 0 16.971L353.432 230H12c-6.627 0-12 5.373-12 12v28c0 6.627 5.373 12 12 12h341.432l-155.13 155.13c-4.686 4.686-4.686 12.284 0 16.971l19.799 19.799c4.686 4.686 12.284 4.686 16.971 0l209.414-209.414c4.686-4.686 4.686-12.284 0-16.971L235.071 38.101c-4.686-4.687-12.284-4.687-16.97 0z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="all_product" data-id="@ViewBag.idlsp">
+                <a href=""><span>Xem tất cả </span></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+

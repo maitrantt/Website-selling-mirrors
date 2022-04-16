@@ -1,0 +1,35 @@
+﻿
+<aside class="show_listCart">
+    <div class="container">
+        <button type="button" class="btn_slc btn" aria-controls="disclosure_content">
+            <span class="show_lc-wrap">
+                <div class="show_lc-title">
+                    <span class="show_lc-title-ico">
+                        <svg viewBox="0 0 20 20" class="show_lc-svg" focusable="false" aria-hidden="true">
+                            <path d="M17.178 13.088H5.453c-.454 0-.91-.364-.91-.818L3.727 1.818H0V0h4.544c.455 0 .91.364.91.818l.09 1.272h13.45c.274 0 .547.09.73.364.18.182.27.454.18.727l-1.817 9.18c-.09.455-.455.728-.91.728zM6.27 11.27h10.09l1.454-7.362H5.634l.637 7.362zm.092 7.715a1.817 1.817 0 10.002-3.634 1.817 1.817 0 00-.002 3.634zm9.18 0a1.816 1.816 0 10-.001-3.635 1.818 1.818 0 000 3.635z">                                </path>
+                        </svg>
+                    </span>
+                    <span class="show_lc-title-name">
+                        Show order summary
+                        <span class="show_lc-title-ico">
+                            <svg viewBox="0 0 14 14" class="show_lc-svg" focusable="false" aria-hidden="true">
+                                <path d="M12.6 3L14 4.4 8.4 10 7 11.4 5.6 10 0 4.4 1.4 3 7 8.6"></path>
+                            </svg>
+                        </span>
+
+                    </span>
+                </div>
+                <div class="show_lc-price">
+                    <p class="show_lc-price-sumPrice">
+                        <strong>$@String.Format("{0:0,0.0}", ViewBag.Sum)</strong>
+                    </p>
+                </div>
+            </span>
+        </button>
+        <div id="disclosure_content" class="hidden" style="height: 0px;">
+            <div class="disclosure_wrap">
+                @{ Html.RenderAction("ListCart", "Order");}
+            </div>
+        </div>
+    </div>
+</aside>

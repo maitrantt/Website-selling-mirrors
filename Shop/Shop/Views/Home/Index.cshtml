@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+
+<script type="text/javascript" async src="~/Scripts/js/slider.js"></script>
+<script type="text/javascript" async src="~/Scripts/js/Slider1.js"></script>
+<script type="text/javascript" async src="~/Scripts/js/ProductView.js"></script>
+
+<div id="quick-view"></div>
+@{ Html.RenderAction("Slider", "Home");}
+@{ Html.RenderAction("Banner", "Home");}
+@{ Html.RenderAction("ProductHot", "Home");}
+@{ Html.RenderAction("StandingMirror", "Home");}
+@{ Html.RenderAction("HangingMirror", "Home");}
+@{ Html.RenderAction("Search", "Home");}

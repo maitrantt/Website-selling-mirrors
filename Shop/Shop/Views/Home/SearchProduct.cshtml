@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Shop.Models.DB.SanPham>
+@*@if (Model.Count() > 0)
+{*@
+    @foreach (var sp in Model)
+    {
+        <div class="row mb-10 mt-10">
+            <div class="col-xs-5 widget_img_pr">
+                <a href="/ProductItem/Index?id=@sp.IdSp" class="overflow-hd block relative">
+                    <img src="@Url.Content("~/Content/images/Products/" + @sp.Image)" alt="@sp.TenSanPham">
+                </a>
+            </div>
+            <div class="col-xs-7 widget_if_pr">
+                <a href="" class="product-title">
+                    @sp.TenSanPham
+                </a>
+                <div class="product-price">
+                    <div class="flex items-start flex-wrap justify-between">
+
+                        @if (@sp.GiamGia > 0)
+                        {
+                            <div class="price">$@sp.Tien</div>
+                            <div class="price-sel">
+                                <s>
+                                    $
+                                    @{
+                                        var giamgia = sp.Tien * (100 - sp.GiamGia) / 100;
+                                        @giamgia
+                                    }
+                                </s>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="priceNotSel">$@sp.Tien</div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+@*}*@

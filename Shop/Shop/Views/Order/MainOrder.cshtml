@@ -1,0 +1,17 @@
+﻿
+<main class="main_shopCart">
+    <div class="container">
+        <div class="main_cart-content">
+            <div class="inf_form">
+                @{ Html.RenderAction("FormOrder", "Order");}
+
+            </div>
+            <div class="inf_listCart">
+                <div class="inf_listCart-wrap">
+                    @{ Html.RenderAction("ListCart", "Order");}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,58 @@
+﻿@model Shop.Models.DB.DatHang
+
+<div class="inf_form">
+    <div class="inf_form-content">
+        <div class="inf_form-order customer-form">
+            <form action="" method="post" id="form_order">
+                <div class="title_head">
+                    <h2 class="section_heading">Thong tin don hang</h2>
+                </div>
+                <div class="field_input">
+                    @Html.LabelFor(model => model.Name)
+                    @Html.TextBoxFor(model => model.Name, new { @class = "input-control", @placeholder = "Họ và tên" })
+                    <div class="erorr_page error_Name"></div>
+
+                </div>
+                <div class="field_input">
+                    @Html.LabelFor(model => model.SDT)
+                    @Html.TextBoxFor(model => model.SDT, new { @class = "input-control", @placeholder = "Số điện thoại" })
+
+                    <div class="erorr_page error_SDT"></div>
+                </div>
+                <div class="field_input">
+                    @Html.LabelFor(model => model.DiaChi)
+                    @Html.TextBoxFor(model => model.DiaChi, new { @class = "input-control", @placeholder = "Địa chỉ" })
+
+                    <div class="erorr_page error_DiaChi"></div>
+                </div>
+                <div class="field_input">
+                    @Html.LabelFor(model => model.TinhThanh)
+                    @Html.DropDownListFor(model => model.TinhThanh, new SelectList((Dictionary<string, string>)ViewBag.TinhThanh, "Value", "Key"), "-")
+                    <div class="erorr_page error_TinhThanh"></div>
+                </div>
+                <div class="field_input">
+                    @Html.LabelFor(model => model.QuanHuyen)
+                    @Html.DropDownListFor(model => model.QuanHuyen, new SelectList("-"))
+                    <div class="erorr_page error_QuanHuyen"></div>
+                </div>
+                <div class="field_input">
+                    @Html.LabelFor(model => model.PhuongXa)
+                    @Html.DropDownListFor(model => model.PhuongXa, new SelectList("-"))
+                    <div class="erorr_page error_PhuongXa"></div>
+                </div>
+                <div class="field_input">
+                    @Html.LabelFor(model => model.GhiChu)
+                    @Html.TextAreaFor(model => model.GhiChu, new { @class = "input-control", @placeholder = "Ghichu", @rows = 4 })
+                    <div class="erorr_page error_GhiChu"></div>
+                </div>
+                <div class="field_input">
+                    <button class="btn_register btn_form w-100" name="submit" type="submit">Dat hang</button>
+                </div>
+                <div class="field_input">
+                    <a href="/Cart" class="btn_register btn_form w-100">Quay ve gio hang</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

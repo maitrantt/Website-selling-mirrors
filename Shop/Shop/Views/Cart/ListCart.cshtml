@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Shop.Models.DB.SanPham_Cart_Result>
+
+<div class="cart__table-body">
+    @if (Model != null)
+    {
+        foreach (var sp in Model)
+        {
+            <div class="cart__item scd-item flex" data-index="" data-id="@sp.IdSp" data-size="@sp.Size">
+                <div class="cart__table-col cart__table-product">
+                    <div class="cart__item-product">
+                        <div class="cart__item-product-image">
+                            <img alt="@sp.TenSanPham" src="@Url.Content("~/Content/images/Products/" + sp.Image + "")">
+                        </div>
+                        <div class="cart__item-product-info">
+                            <div class="cart__item-product-title">
+                                <a href="/ProductItem/Index?id=@sp.IdSp" data-role="product-title">@sp.Image</a>
+                            </div>
+                            <div class="cart__item-product-size">
+                               <span>Size: @sp.Size</span>
+                            </div>
+                            <button class="scd-item__remove" data-id="@sp.IdSp">Remove</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart__table-col cart__table-price">
+                    <div class="cart__item-prices">
+                        <div class="cart__item-discount-prices">
+                            @if (@sp.GiamGia > 0)
+                            {
+                                <p class="cart__item--regular-price">
+                                    <s>$@sp.Tien</s>
+                                </p>
+                            }
+                            <p class="cart__item--final-price">
+                                <span class="order-discount">
+                                    $
+                                    @{
+                                        var giamgia = sp.Tien * (100 - sp.GiamGia) / 100;
+                                        @giamgia
+                                    }
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="scart__quantity mt-2 hidden-sm hidden-lg hidden-md block">
+                        <div class="flex items-center justify-end">
+                            <span class="text-qty">Qty</span>
+                            <div class="scd-item__qty flex justify-between">
+                                <button class="scd-item__btn" data-id="@sp.IdSp" data-qty-change="dec">
+                                    -
+                                </button>
+                                <input id="quantity-detail" class="scd-item__qty_input text-center" type="number" name="countItemCart" data-id="@sp.IdSp" value="@sp.SoLuong" min="0">
+                                <button class="scd-item__btn" data-id="@sp.IdSp" data-qty-change="inc">
+                                    +
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="cart__table-col cart__table-quantity hidden-xs block">
+                    <div class="scd-item__qty flex justify-between">
+                        <button class="scd-item__btn" data-id="@sp.IdSp" data-qty-change="dec">
+                            -
+                        </button>
+                        <input id="quantity-detail" class="scd-item__qty_input text-center" type="number" name="countItemCart" data-id="@sp.IdSp" value="@sp.SoLuong" min="0">
+                        <button class="scd-item__btn" data-id="@sp.IdSp" data-qty-change="inc">
+                            +
+                        </button>
+                    </div>
+                </div>
+
+                <div class="cart__table-col cart__table-subtotal text-right hidden-xs block">
+                    <div class="cart__item-discount-prices">
+                        <p class="cart__item--final-price">
+                            @{
+                                var sum = giamgia * sp.SoLuong;
+                            }
+                            <span class="order-discount" data-cart-item-final-price="@sum">$@sum</span>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        }
+    }
+
+</div>

@@ -1,0 +1,56 @@
+﻿@model List<Shop.Models.ReviewProduct>
+
+<div class="tap-content" data-index="2">
+    <div class="customr-button hidden-sm hidden-md hidden-lg">Product reviews<i class="icon">></i> </div>
+    <div class="customr-container" style="display: none;">
+        <div class="product-container">
+            <div class="pr-header">
+                <h2 class="pr-title">Customer Reviews</h2>
+                <div class="pr-summary rte">
+                    <span class="pr-starrating pr-summary-starrating" data-label="@ViewBag.sumSao" aria-label="@ViewBag.sumSao of 5 stars" role="img">
+                        @for (int i = 1; i <= @ViewBag.sumSao; i++)
+                        {
+                            <i class="fa fa-regular fa-star" style="color: yellow; font-size: 18px" aria-hidden="true"></i>
+                        }
+                        @if (@ViewBag.sumSao - (int)ViewBag.sumSao > 0)
+                        {
+                            <i class="fa fa-solid fa-star-sharp-half" style="color: yellow; font-size: 18px"></i>
+                        }
+
+                    </span>
+                    <span class="pr-summary-caption">
+                        <span class="pr-summary-actions-togglereviews">Based on <span class="count-summary">@Model.Count()</span>  reviews</span>
+                    </span>
+                    <span class="pr-summary-actions">
+                        <a href="#" class="pr-summary-actions-newreview" onclick="toggleForm(@ViewBag.idSp);return false">Write a review</a>
+                    </span>
+                </div>
+            </div>
+            <div class="pr-content">
+                @{ Html.RenderAction("WriteReview", new { @idSp = ViewBag.idSp });}
+                <div class="pr-reviews" id="reviews_@ViewBag.idSp">
+                    @foreach (var pr in Model)
+                    {
+                        <div class="pr-review" id="pr-review-@pr.idbl">
+                            <div class="pr-review-header">
+                                <span class="pr-starratings pr-review-header-starratings" aria-label="@pr.sao of 5 stars" role="img">
+                                    @for (int i = 0; i < pr.sao; i++)
+                                    {
+                                        <i class="fa fa-regular fa-star" style="color: yellow; font-size: 18px" aria-hidden="true"></i>
+                                    }
+                                </span>
+                                <h3 class="pr-review-header-title">@pr.TitleText</h3>
+                                <span class="pr-review-header-byline"><strong>@pr.TenKh</strong> on <strong>@pr.ngay</strong></span>
+                            </div>
+                            <div class="pr-review-content">
+                                <p class="pr-review-content-body">@pr.Text</p>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

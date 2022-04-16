@@ -1,0 +1,35 @@
+﻿@model Shop.Models.DB.BinhLuan
+
+<div class="pr-form" id="form_@ViewBag.idSp" style="display: none">
+    <form method="post" action="" id="new-review-form" class="new-review-form" onsubmit="Fr.submitForm(this);return false;">
+        <input type="hidden" name="review[rating]">
+        <input type="hidden" name="product_id" value="@ViewBag.idSp">
+        <h3 class="pr-form-title">Write a review</h3>
+        <fieldset class="pr-form-review">
+            <div class="pr-form-review-rating">
+                @Html.LabelFor(model => model.sao, new { @class = "pr-form-label" })
+                <ul class="pr-form-input pr-starrating ">
+                    <i onclick="Fr.setRating(this);return false;" class="fa fa-regular fa-star" data-value="1" aria-label="1 of 5 stars">&nbsp;</i>
+                    <i onclick="Fr.setRating(this);return false;" class="fa fa-regular fa-star" data-value="2" aria-label="2 of 5 stars">&nbsp;</i>
+                    <i onclick="Fr.setRating(this);return false;" class="fa fa-regular fa-star" data-value="3" aria-label="3 of 5 stars">&nbsp;</i>
+                    <i onclick="Fr.setRating(this);return false;" class="fa fa-regular fa-star" data-value="4" aria-label="4 of 5 stars">&nbsp;</i>
+                    <i onclick="Fr.setRating(this);return false;" class="fa fa-regular fa-star" data-value="5" aria-label="5 of 5 stars">&nbsp;</i>
+                </ul>
+            </div>
+            <div class="pr-form-review-title">
+                @Html.LabelFor(model => model.TitleText, new { @class = "pr-form-label" })
+                @Html.TextBoxFor(model => model.TitleText, new { @class = "pr-form-input pr-form-input-text", @placeholder = "Give your review a title" })
+
+            </div>
+            <div class="pr-form-review-body">
+                @Html.LabelFor(model => model.Text, new { @class = "pr-form-label" })
+                @Html.TextAreaFor(model => model.Text, new { @class = "pr-form-input pr-form-input-textarea", @placeholder = "Write your comments here", @rows = "10" })
+
+
+            </div>
+        </fieldset>
+        <fieldset class="pr-form-actions">
+            <input type="submit" class="btn pr-button pr-button-primary button button-primary btn btn-primary" value="Submit Review">
+        </fieldset>
+    </form>
+</div>

@@ -1,0 +1,55 @@
+﻿@model Shop.Models.DB.KhachHang
+
+<section id="register">
+    <div class="container">
+        <div class="register-content">
+            <div class="title_head">
+                <h2 class="section_heading">Đăng ký tài khoản</h2>
+            </div>
+            <div class="customer-form">
+                @using (Html.BeginForm("FormLogin", "Login", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="field_input">
+                        @Html.LabelFor(model => model.FirstName)
+                        @Html.TextBoxFor(model => model.FirstName, new { @class = "input-control", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "erorr_page" })
+                    </div>
+                    <div class="field_input">
+                        @Html.LabelFor(model => model.LastName)
+                        @Html.TextBoxFor(model => model.LastName, new { @class = "input-control" })
+                        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "erorr_page" })
+                    </div>
+                    <div class="field_input">
+                        @Html.LabelFor(model => model.Email)
+                        @Html.TextBoxFor(model => model.Email, new { @class = "input-control" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "erorr_page" })
+                        @if (ViewBag.error != null)
+                        {
+                            <span class="erorr_page">@ViewBag.error</span>
+                        }
+
+                    </div>
+                    <div class="field_input">
+                        @Html.LabelFor(model => model.Password)
+                        @Html.PasswordFor(model => model.Password, new { @class = "input-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "erorr_page" })
+                    </div>
+                    <div class="field_input">
+                        <p>Sign up for early Sale access plus tailored new arrivals, trends and promotions. To opt out, click unsubscribe in our emails.</p>
+                    </div>
+                    <div class="field_input field-btn">
+                        <button class="btn_register btn_form" type="submit">Register</button>
+                    </div>
+                    <div class="field_input field-btn">
+                        <a href="/Login" class="btn_login btn_form">Log In</a>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+

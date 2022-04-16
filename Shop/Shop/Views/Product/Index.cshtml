@@ -1,0 +1,92 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var lsp = ViewBag.lsp;
+}
+
+<script type="text/javascript" async src="~/Scripts/js/PageProduct.js"></script>
+<script type="text/javascript" async src="~/Scripts/js/ProductView.js"></script>
+<div id="quick-view"></div>
+<seaction class="bread-crumb">
+    <div class="container">
+        <div class="title-content-top">
+            <h1>@ViewBag.tenlsp</h1>
+        </div>
+        <div class="row">
+            <div class="col-12 text-left">
+                <ul class="ul-breadcrumb">
+                    <li class="">
+                        <a href="/Home" class="home">Home</a>
+                        <span>
+                            <svg class="w-12px h-12px" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+                                <path d="M17.525 36.465l-7.071 7.07c-4.686 4.686-4.686 12.284 0 16.971L205.947 256 10.454 451.494c-4.686 4.686-4.686 12.284 0 16.971l7.071 7.07c4.686 4.686 12.284 4.686 16.97 0l211.051-211.05c4.686-4.686 4.686-12.284 0-16.971L34.495 36.465c-4.686-4.687-12.284-4.687-16.97 0z">
+                                </path>
+                            </svg>
+                        </span>
+                    </li>
+                    <li><span>@ViewBag.tenlsp</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</seaction>
+<div id="mainProduct">
+    <div class="product-wrap">
+        <div class="container">
+            <div class="product-content">
+                <div id="product_idlsp" class="hidden" data-id="@if (ViewBag.idlsp != null) { @ViewBag.idlsp; } "></div>
+                <div class="main_product">
+                    <div class="product-toolbar">
+                        <div class="toolbar-wrapper">
+                            <div class="flex items-center justify-between flex-wrap">
+                                <div class="font-medium" data-toolbar-sorting="Featured">
+                                    <div class="custom-select">
+                                        <div class="select-selected">
+                                            <span>
+                                                Featured
+                                            </span>
+                                            <span class="select-arrow">
+                                                <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                    <path d="M441.9 167.3l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L224 328.2 42.9 147.5c-4.7-4.7-12.3-4.7-17 0L6.1 167.3c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z"></path>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="select-items hidden">
+                                            <div class="select_item" data-value="A-Z">
+                                                Alphabetically, A-Z
+                                            </div>
+                                            <div class="select_item" data-value="Z-A">
+                                                Alphabetically, Z-A
+                                            </div>
+                                            <div class="select_item" data-value="Price-asc">
+                                                Price, low to high
+                                            </div>
+                                            <div class="select_item" data-value="Price-desc">
+                                                Price, high to low
+                                            </div>
+                                            <div class="select_item" data-value="date-asc">
+                                                Date, old to new
+                                            </div>
+                                            <div class="select_item" data-value="date-desc">
+                                                Date, new to old
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-list">
+                        @{ Html.RenderAction("ListProduct", "Product");}
+                    </div>
+                </div>
+                <div class="text-center mt-10">
+                    <div class="page-pagination">
+                        <p data-page="1" data-idlsp="@ViewBag.idlsp" style="padding: 20px; font-weight: bold">Xem Them</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+@{ Html.RenderAction("Search", "Home");}

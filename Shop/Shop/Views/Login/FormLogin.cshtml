@@ -1,0 +1,64 @@
+﻿@model Shop.Models.DB.KhachHang
+
+@{
+    ViewBag.Title = "FormLogin";
+}
+
+<section id="login">
+    <div class="container">
+        <div class="login-content">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="title_head">
+                        <h2 class="section_heading">Log In</h2>
+                    </div>
+                    <div class="customer-form">
+                        @using (Html.BeginForm("FormLogin", "Login", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            if (ViewBag.error != null)
+                            {
+                                <div class="erorr_page">@ViewBag.error</div>
+                            }
+                            
+                            <div class="field_input">
+                                @Html.LabelFor(model => model.Email)
+                                @Html.TextBoxFor(model => model.Email, new { @class = "input-control" })
+                                @Html.ValidationMessageFor(model => model.Email)
+                            </div>
+                            <div class="field_input">
+                                @Html.LabelFor(model => model.Password)
+                                @Html.PasswordFor(model => model.Password, new { @class = "input-control" })
+                                @Html.ValidationMessageFor(model => model.Password)
+                            </div>
+                            <div class="field_input field-btn">
+                                <a href="">Forgot your pasword?</a>
+                            </div>
+                            <div class="field_input">
+                                <button class="btn_register btn_form w-100" type="submit">Sing In</button>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+
+                    <div class="title_head">
+                        <h2 class="section_heading">New Customer</h2>
+                    </div>
+                    <div class="customer-form">
+                        <div class="field_input">
+                            <p>Sign up for early Sale access plus tailored new arrivals, trends and promotions. To opt out, click unsubscribe in our emails.</p>
+                        </div>
+                        <div class="field_input">
+                            <a href="/Register" class="btn_form btn_register_width">Register</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+

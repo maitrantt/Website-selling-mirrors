@@ -1,0 +1,31 @@
+﻿
+<div id="search_canvas" class="product_search">
+    <div class="flex flex-col h-full mini_cart">
+        <div class="mini_cart-header flex justify-between items-center">
+            <h3 class="widget-title">Search out site</h3>
+            <i class="fa fa-x close_pp" style="font-size: 18px;">X</i>
+        </div>
+        <div class="mini_cart_wrap">
+            <form method="get" action="/search" class="search_header mini_search_frm relative">
+                <input type="hidden" name="type" value="product" />
+                <div class="frm_search-input relative overflow-hd">
+                    <input class="search_header-input js_iput_search" autocomplete="off"
+                           type="text" name="seach_input" placeholder="Search for products" />
+                    <button class="search_header-submit js_bnt_seach">
+                        <i class="fa fa-search"></i>
+                    </button>
+
+                </div>
+            </form>
+            <div class="search_header_title">
+
+            </div>
+            <div class="search_header-content min_cart_content fixcl-scroll">
+                <div class="product_list_widget fixcl-scroll-content">
+                    <div class="js_prs_search">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

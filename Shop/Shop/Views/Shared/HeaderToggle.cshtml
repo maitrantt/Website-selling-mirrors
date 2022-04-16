@@ -1,0 +1,67 @@
+﻿
+@model IEnumerable<Shop.Models.DB.LoaiSanPham>
+
+<div id="header-toogle">
+    <div id="mn-blocker"></div>
+    <div class="header-toogle-content hidden">
+        <div class="toogle-wrap h-full flex flex-col justify-between">
+            <div class="header-toogle-navmenu">
+                <ul class="w-full">
+                    <li class="flex items-center justify-between">
+                        <a href="" c lass="flex items-center">
+                            <span>Home</span>
+                        </a>
+                    </li>
+                   
+                    <li class="flex items-center justify-between">
+                        <a href="/Product/Index" class="flex items-center" data-id="all">
+                            <span>Shop</span>
+                        </a>
+                        @if (@ViewBag.count > 0)
+                        {
+                            <span class="toogle-ico-submenu flex items-center justify-between">
+                                <svg class="w-16px h-16px" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+                                    <path d="M17.525 36.465l-7.071 7.07c-4.686 4.686-4.686 12.284 0 16.971L205.947 256 10.454 451.494c-4.686 4.686-4.686 12.284 0 16.971l7.071 7.07c4.686 4.686 12.284 4.686 16.97 0l211.051-211.05c4.686-4.686 4.686-12.284 0-16.971L34.495 36.465c-4.686-4.687-12.284-4.687-16.97 0z">
+                                    </path>
+                                </svg>
+                            </span>
+                        }
+                        @if (@ViewBag.count > 0)
+                        {
+                            <div class="sub-links flex-col flex w-full h-full hidden">
+                                <div class="sub-link-content h-full">
+                                    <button class="flex items-center sub-link-back">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-16px h-16px" fill="none" viewBox="0 0 16 17">
+                                            <path fill="currentColor" d="M8.12109 15.9141c-.21093.1875-.41015.1875-.59765 0L.175781 8.53125c-.210937-.1875-.210937-.375 0-.5625L7.52344.585938c.1875-.1875.38672-.1875.59765 0l.70313.703122c.1875.1875.1875.38672 0 .59766L3.375 7.33594h11.9883c.2812 0 .4219.14062.4219.42187v.98438c0 .28125-.1407.42187-.4219.42187H3.375l5.44922 5.44924c.1875.2109.1875.4101 0 .5976l-.70313.7032z">
+                                            </path>
+                                        </svg>
+                                        <span class="ml-2">Back</span>
+                                    </button>
+                                    <ul class="sub-links--lv1">
+                                        @foreach (var p in Model)
+                                        {
+                                            <li class="flex items-center justify-between">
+                                                <a href="/Product/Index?id=@p.IdLoaisp" class="flex items-center" data-id="@p.IdLoaisp">
+                                                    <span>@p.TenLsp</span>
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        }
+                    </li>
+
+                </ul>
+            </div>
+            <div class="header-toogle-account mt-20">
+                <div class="toogler-acc-content">
+                    <div class="text">My Account</div>
+                    <a href="/Login" class="mb-3 btn_register btn_form" type="submit">Log In</a>
+                    <a href="/Register" class="mb-3 btn_login  btn_form" type="submit">Register</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

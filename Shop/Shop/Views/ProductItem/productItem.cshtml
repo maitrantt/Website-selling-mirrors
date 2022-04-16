@@ -1,0 +1,124 @@
+﻿@{
+    var data = @ViewBag.data;
+    var arrImage = @ViewBag.arrImage;
+    var arrSize = @ViewBag.arrSize;
+}
+<div class="product-Item" id="ItemProduct">
+    <div class="container">
+        <div class="relative">
+            <div class="quickView-content">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-7 col-md-6 relative overflow-hd">
+                        <div class="swiper-ImageContent w-full" style="overflow: hidden;">
+                            <div class="swiper-listImage w-full" style="float: left; width: 10000px; transform: translate(0px, 0px, 0px)">
+                                @foreach (var item in arrImage)
+                                {
+                                    <div class="imageItem" style="float: left; width: 1000px">
+                                        <img src="@Url.Content("~/Content/images/Products/"+@item+"")" alt="@data.TenSanPham">
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="slider_controls flex items-center justify-between">
+                            <button class="swiper-button-control button-prev btn-icon">
+                                <svg width="14px" height="14px" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <path d="M229.9 473.899l19.799-19.799c4.686-4.686 4.686-12.284 0-16.971L94.569 282H436c6.627 0 12-5.373 12-12v-28c0-6.627-5.373-12-12-12H94.569l155.13-155.13c4.686-4.686 4.686-12.284 0-16.971L229.9 38.101c-4.686-4.686-12.284-4.686-16.971 0L3.515 247.515c-4.686 4.686-4.686 12.284 0 16.971L212.929 473.9c4.686 4.686 12.284 4.686 16.971-.001z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button class="swiper-button-control button-next btn-icon">
+                                <svg fill="currentColor" width="14px" height="14px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <path d="M218.101 38.101L198.302 57.9c-4.686 4.686-4.686 12.284 0 16.971L353.432 230H12c-6.627 0-12 5.373-12 12v28c0 6.627 5.373 12 12 12h341.432l-155.13 155.13c-4.686 4.686-4.686 12.284 0 16.971l19.799 19.799c4.686 4.686 12.284 4.686 16.971 0l209.414-209.414c4.686-4.686 4.686-12.284 0-16.971L235.071 38.101c-4.686-4.687-12.284-4.687-16.97 0z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-md-6">
+                        <div class="quick-view_info">
+                            <div class="prod_title flex justify-between items-center">
+                                <h1 class="section_heading"><a href="/ProductItem/Index?id=@data.IdSp">@data.TenSanPham</a></h1>
+                            </div>
+                            <div class="product-price">
+                                <div class="flex items-center flex-wrap">
+                                    @if (@data.GiamGia > 0)
+                                    {
+                                        <div class="price">$@data.Tien</div>
+                                        <div class="price-sel">
+                                            $
+                                            @{
+                                                var giamgia = data.Tien * (100 - data.GiamGia) / 100;
+                                                @giamgia
+                                            }
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="priceNotSel">$@data.Tien</div>
+                                    }
+
+                                </div>
+                            </div>
+                            <div class="form-action">
+                                <form method="post" action="" id="product-form-@data.IdSp" accept-charset="UTF-8" class="product-form form" enctype="multipart/form-data" novalidate="novalidate" data-product-id="@data.IdSp">
+                                    <input hidden name="product_id" value="@data.IdSp">
+                                    <div class="product-form__actions" data-cart-actions="">
+                                        <div class="product-size">
+                                            <label class="prod__option-label">
+                                                Size
+                                            </label>
+                                            <div class="flex flex-wrap items-start">
+                                                @foreach (var item in arrSize)
+                                                {
+                                                    <div class="sizeItem" data-value="@item.Size">
+                                                        <input id="option-@item.Size" type="radio" name="option-@item.Size" value="@item.Size" checked="">
+                                                        <label for="">@item.Size</label>
+                                                        <span class="tooltip-top tooltip-item">
+                                                            <span class="tooltip-content">
+                                                                @item.DoDai
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="product-quantity">
+                                            <label class="prod__option-label">
+                                                Quantity
+                                            </label>
+                                            <div class="flex flex-wrap items-end">
+                                                <div class="form_input-wrapper mr-20" data-quantity-input-wrapper="">
+                                                    <div class="quantity-input flex  ">
+                                                        <button class="quantity-input__button quantity-btn-t flex items-center justify-center h-46px w-46px" type="button" data-product-id="@data.IdSp"
+                                                                onclick="var result = document.getElementById('quantity-detail'); var qtyqv = result.value; if( !isNaN( qtyqv ) && qtyqv > 1 ) result.value--;return false;">
+                                                            <svg class="w-20px h-20px" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                                                <path d="M376 232H8c-4.42 0-8 3.58-8 8v32c0 4.42 3.58 8 8 8h368c4.42 0 8-3.58 8-8v-32c0-4.42-3.58-8-8-8z">
+                                                                </path>
+                                                            </svg>
+                                                        </button>
+                                                        <input id="quantity-detail" class="quantity-input__element text-center flex-grow shrink appearance-none" type="number" name="quantity" value="1" min="1" data-product-id="@data.IdSp">
+                                                        <button class="quantity-input__button quantity-btn-g flex items-center justify-center h-46px w-46px" type="button" data-product-id="@data.IdSp"
+                                                                onclick="var result = document.getElementById('quantity-detail'); var qtyqv = result.value; if( !isNaN( qtyqv )) result.value++;return false;">
+                                                            <svg class="w-20px h-20px" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                                                <path d="M376 232H216V72c0-4.42-3.58-8-8-8h-32c-4.42 0-8 3.58-8 8v160H8c-4.42 0-8 3.58-8 8v32c0 4.42 3.58 8 8 8h160v160c0 4.42 3.58 8 8 8h32c4.42 0 8-3.58 8-8V280h160c4.42 0 8-3.58 8-8v-32c0-4.42-3.58-8-8-8z"></path>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <button type="submit" name="add" class="add-to-cart btn_form" data-atc-text="Add to cart">
+                                                    <span class="not-change atc-text">Add to cart</span>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

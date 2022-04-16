@@ -1,0 +1,57 @@
+﻿
+@model IEnumerable<Shop.Models.DB.SanPham_Cart_Result>
+
+<div class="inf_listCart-content">
+    <div class="row">
+        @foreach (var sp in Model)
+        {
+            <div class="col-xs-12 col-12 inf_Cart-item flex">
+                <div class="infc_item-image justify-start flex w-full h-full">
+                    <div class="infc_item-img">
+                        <img alt="@sp.TenSanPham" src="@Url.Content("~/Content/images/Products/" + sp.Image + "")">
+                    </div>
+                    <div class="countItem">@sp.SoLuong</div>
+                </div>
+                <div class="infc_item-desc justify-left items-center  flex flex-1 ">
+                    <h2>@sp.TenSanPham</h2>
+                </div>
+                <div class="infc_item-price justify-center items-center flex flex-column">
+                    <p class="infc_item-regular-price">
+                        @if(sp.GiamGia> 0){ 
+                        <s>@String.Format("{0:0,0.00}", sp.Tien)  </s>
+                            @*<s>$@sp.Tien.ToString("0.00")</s>*@
+                        }
+                        
+                    </p>
+                    <p class="infc_item-final-price">
+                        <span class="order-discount">
+                            $
+                            @{
+                                var giamgia = (sp.Tien * (100 - sp.GiamGia) / 100);
+                                @String.Format("{0:0,0.00}", giamgia)
+                            }
+                        </span>
+                    </p>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+<div class="inf-distance w-full"></div>
+<div class="inf_Money">
+    <div class="inf_Money-subtotal flex justify-between items-center flex-wrap">
+        <div class="inf-Money-subtotal-title inf_Money-title"><span>$Subtotal</span></div>
+        <div class="inf-Money-subtotal-price inf_Money-price"><span>$@String.Format("{0:0,0.00}", ViewBag.Sum)</span></div>
+
+    </div>
+    <div class="inf_Money-shipping flex justify-between items-center flex-wrap">
+        <div class="inf-Money-shipping-title inf_Money-title"><span>Shipping</span></div>
+        <div class="inf-Money-shipping-price inf_Money-price"><span></span></div>
+    </div>
+    <div class="inf-distance"></div>
+    <div class="inf_Money-Total flex justify-between items-center flex-wrap">
+        <div class="inf-Money-Total-title inf_Money-title"><span>Total</span></div>
+        <div class="inf-Money-Total-price inf_Money-price"><span>$@String.Format("{0:0,0.00}", ViewBag.Sum)</span></div>
+    </div>
+</div>
